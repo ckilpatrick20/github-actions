@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: iPipeline Terraform Module Code of Conduct
+    url: .github/code_of_conduct/README.md
+    about: If this is your first time here, please take a moment to read the iPipeline Terraform Module Code of Conduct.
