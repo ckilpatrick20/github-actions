@@ -3,7 +3,7 @@ name: Bug report
 about: Create a bug report to help us improve
 title: Terraform module bug
 labels: bug
-assignees: ''
+assignees: 'ckilpatrick20'
 ---
 
 ### Describe the bug
