@@ -12,6 +12,11 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
+
+    defaults:
+    run:
+      working-directory: ${{ env.tf_working_dir }}
+
     steps:
     - uses: actions/checkout@v2
     - uses: hashicorp/setup-terraform@v1
@@ -52,7 +57,7 @@ jobs:
           
           </details>
           
-          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_actions_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
+          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
             
           github.issues.createComment({
             issue_number: context.issue.number,
