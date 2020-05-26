@@ -8,9 +8,6 @@ on:
 env:
   tf_version: 'latest'
   tf_working_dir: '.'
-defaults:
-  run:
-    working-directory: ${{ env.tf_working_dir }}
 jobs:
   terraform:
     name: 'Terraform'
