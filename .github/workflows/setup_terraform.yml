@@ -34,9 +34,9 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
+          const output = `#### Terraform Format \`${{ steps.fmt.outcome }}\`
 
-          <details><summary>Show Plan</summary>
+          <details><summary>Show fmt</summary>
           
           \`\`\`${process.env.FMT}\`\`\`
           
@@ -60,22 +60,22 @@ jobs:
       run: terraform init
 
     - name: Add Terraform Init Comment
-      uses: actions/github-script@0.9.0
-      if: ${{ steps.init.outputs.exitcode != 1 }}
+      uses: actions/github-script@v1.1.0
+      if: ${{ steps.init.outputs.exitcode != 0 }}
       env:
         INIT: "terraform\n${{ steps.init.outputs.stdout }}"
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const output = #### Terraform Init ${{ steps.init.outputs.stdout }}
-          
+          const output = `#### Terraform Init \`${{ steps.init.outcome }}\`
+
           <details><summary>Show init</summary>
           
           \`\`\`${process.env.INIT}\`\`\`
           
           </details>
           
-          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
+          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_actions_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
             
           github.issues.createComment({
             issue_number: context.issue.number,
@@ -94,21 +94,21 @@ jobs:
 
     - name: Add Terraform Validate Comment
       uses: actions/github-script@0.9.0
-      if: ${{ steps.validate.outputs.exitcode != 1 }}
+      if: ${{ steps.validate.outputs.exitcode != 0 }}
       env:
         VALIDATE: "terraform\n${{ steps.validate.outputs.stdout }}"
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const output = #### Terraform Validation ${{ steps.validate.outputs.stdout }}
-          
-          <details><summary>Show Validate</summary>
+          const output = `#### Terraform Validate \`${{ steps.validate.outcome }}\`
+
+          <details><summary>Show validate</summary>
           
           \`\`\`${process.env.VALIDATE}\`\`\`
           
           </details>
           
-          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
+          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_actions_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
             
           github.issues.createComment({
             issue_number: context.issue.number,
