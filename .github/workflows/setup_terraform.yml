@@ -32,28 +32,20 @@ jobs:
 
     - name: Terraform Validate
       id: validate
-      run: terraform validate -no-color
-
-    - name: Terraform Plan
-      id: plan
-      run: terraform plan -no-color
-      continue-on-error: false
+      run: terraform validate -no-color -detailed-exitcode
 
     - uses: actions/github-script@0.9.0
-      if: github.event_name == 'pull_request'
+      if: ${{ steps.validate.outputs.exitcode == 1 }}
       env:
-        PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+        VALIDATE: "terraform\n${{ steps.validate.outputs.stdout }}"
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const output = `#### Terraform Format and Style \`${{ steps.fmt.outcome }}\`
-          #### Terraform Initialization \`${{ steps.init.outcome }}\`
-          #### Terraform Validation ${{ steps.validate.outputs.stdout }}
-          #### Terraform Plan \`${{ steps.plan.outcome }}\`
+          const output = #### Terraform Validation ${{ steps.validate.outputs.stdout }}
           
-          <details><summary>Show Plan</summary>
+          <details><summary>Show Validate</summary>
           
-          \`\`\`${process.env.PLAN}\`\`\`
+          \`\`\`${process.env.VALIDATE}\`\`\`
           
           </details>
           
