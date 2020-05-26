@@ -31,12 +31,14 @@ jobs:
       if: ${{ steps.fmt.outputs.exitcode != 0 }}
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        script: |       
-          github.issues.createComment({
+        script: |
+            const output = ${{ steps.fmt.outputs.stdout }}
+
+            github.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: 'Terraform fmt failed'
+            body: output
           })
 
     - name: Check Terraform FMT Exit Code
