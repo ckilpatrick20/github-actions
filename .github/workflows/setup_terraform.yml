@@ -52,7 +52,7 @@ jobs:
           })
 
     - name: Check Terraform FMT Exit Code
-      if: ${{ steps.fmt.outputs.exitcode != 1 }} 
+      if: ${{ steps.fmt.outputs.exitcode != 0 }} 
       run: exit ${{ steps.fmt.outputs.exitcode }}
 
     - name: Terraform Init
@@ -85,7 +85,7 @@ jobs:
           })
 
     - name: Check Terraform Init Exit Code
-      if: ${{ steps.init.outputs.exitcode != 1 }} 
+      if: ${{ steps.init.outputs.exitcode != 0 }} 
       run: exit ${{ steps.init.outputs.exitcode }}
 
     - name: Terraform Validate
@@ -118,5 +118,5 @@ jobs:
           })
 
     - name: Check Terraform Validate Exit Code
-      if: ${{ steps.validate.outputs.exitcode != 1 }} 
+      if: ${{ steps.validate.outputs.exitcode != 0 }} 
       run: exit ${{ steps.validate.outputs.exitcode }}
