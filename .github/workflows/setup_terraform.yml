@@ -26,7 +26,8 @@ jobs:
       run: terraform fmt -check -diff
       continue-on-error: true
 
-    - uses: actions/github-script@0.9.0
+    - name: Add Terraform Fmt Comment
+      uses: actions/github-script@0.9.0
       if: ${{ steps.fmt.outputs.exitcode != 1 }}
       env:
         FMT: "terraform\n${{ steps.fmt.outputs.stdout }}"
@@ -49,13 +50,17 @@ jobs:
             repo: context.repo.repo,
             body: output
           })
-        run: exit ${{ steps.fmt.outputs.exitcode }}
+
+    - name: Check Terraform FMT Exit Code
+      if: ${{ steps.fmt.outputs.exitcode != 1 }} 
+      run: exit ${{ steps.fmt.outputs.exitcode }}
 
     - name: Terraform Init
       id: init
       run: terraform init
 
-    - uses: actions/github-script@0.9.0
+    - name: Add Terraform Init Comment
+      uses: actions/github-script@0.9.0
       if: ${{ steps.init.outputs.exitcode != 1 }}
       env:
         INIT: "terraform\n${{ steps.init.outputs.stdout }}"
@@ -78,13 +83,17 @@ jobs:
             repo: context.repo.repo,
             body: output
           })
-        run: exit ${{ steps.init.outputs.exitcode }}
+
+    - name: Check Terraform Init Exit Code
+      if: ${{ steps.init.outputs.exitcode != 1 }} 
+      run: exit ${{ steps.init.outputs.exitcode }}
 
     - name: Terraform Validate
       id: validate
       run: terraform validate -no-color
 
-    - uses: actions/github-script@0.9.0
+    - name: Add Terraform Validate Comment
+      uses: actions/github-script@0.9.0
       if: ${{ steps.validate.outputs.exitcode != 1 }}
       env:
         VALIDATE: "terraform\n${{ steps.validate.outputs.stdout }}"
@@ -107,4 +116,7 @@ jobs:
             repo: context.repo.repo,
             body: output
           })
-        run: exit ${{ steps.validate.outputs.exitcode }}
+
+    - name: Check Terraform Validate Exit Code
+      if: ${{ steps.validate.outputs.exitcode != 1 }} 
+      run: exit ${{ steps.validate.outputs.exitcode }}
