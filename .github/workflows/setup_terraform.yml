@@ -36,11 +36,9 @@ jobs:
           
           <details><summary>Show fmt</summary>
           
-          \`\`\`${{ steps.fmt.outputs.stdout }}\`\`\`
+          \`\`\`test code\`\`\`
           
           </details>
-          
-          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
             
           github.issues.createComment({
             issue_number: context.issue.number,
