@@ -24,11 +24,61 @@ jobs:
     - name: Terraform fmt
       id: fmt
       run: terraform fmt -check -diff
-      continue-on-error: false
+      continue-on-error: true
+
+    - uses: actions/github-script@0.9.0
+      if: ${{ steps.fmt.outputs.exitcode == 1 }}
+      env:
+        FMT: "terraform\n${{ steps.fmt.outputs.stdout }}"
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const output = #### Terraform fmt ${{ steps.fmt.outputs.stdout }}
+          
+          <details><summary>Show fmt</summary>
+          
+          \`\`\`${process.env.FMT}\`\`\`
+          
+          </details>
+          
+          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
+            
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: output
+          })
+        run: exit ${{ steps.fmt.outputs.exitcode }}
 
     - name: Terraform Init
       id: init
       run: terraform init
+
+    - uses: actions/github-script@0.9.0
+      if: ${{ steps.init.outputs.exitcode == 1 }}
+      env:
+        INIT: "terraform\n${{ steps.init.outputs.stdout }}"
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const output = #### Terraform Init ${{ steps.init.outputs.stdout }}
+          
+          <details><summary>Show init</summary>
+          
+          \`\`\`${process.env.INIT}\`\`\`
+          
+          </details>
+          
+          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
+            
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: output
+          })
+        run: exit ${{ steps.init.outputs.exitcode }}
 
     - name: Terraform Validate
       id: validate
@@ -57,3 +107,4 @@ jobs:
             repo: context.repo.repo,
             body: output
           })
+        run: exit ${{ steps.validate.outputs.exitcode }}
