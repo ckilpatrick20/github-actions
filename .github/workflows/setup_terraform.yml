@@ -32,14 +32,8 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const output = #### Terraform fmt failure
+          const output = #### Terraform fmt failed
           
-          <details><summary>Show fmt</summary>
-          
-          \`\`\`test code\`\`\`
-          
-          </details>
-            
           github.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
