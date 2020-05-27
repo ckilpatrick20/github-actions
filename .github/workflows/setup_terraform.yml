@@ -10,7 +10,7 @@ env:
   tf_working_dir: '.'
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'Terraform Setup'
     runs-on: ubuntu-latest
 
     defaults:
