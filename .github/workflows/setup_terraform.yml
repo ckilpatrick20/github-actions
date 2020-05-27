@@ -1,0 +1,122 @@
+name: 'Terraform GitHub Actions'
+on:
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '.github/**'
+env:
+  tf_version: 'latest'
+  tf_working_dir: '.'
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ${{ env.tf_working_dir }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: hashicorp/setup-terraform@v1
+
+    - name: Terraform fmt
+      id: fmt
+      run: terraform fmt -check -diff
+      continue-on-error: true
+
+    - name: Add Terraform Fmt Comment
+      uses: actions/github-script@v1.1.0
+      if: ${{ steps.fmt.outputs.exitcode != 0 }}
+      env:
+        FMT: "terraform\n${{ steps.fmt.outputs.stdout }}"
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const output = `#### Terraform Format \`${{ steps.fmt.outcome }}\`
+
+          <details><summary>Show fmt</summary>
+          
+          \`\`\`${process.env.FMT}\`\`\`
+          
+          </details>
+          
+          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_actions_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
+            
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: output
+          })
+
+    - name: Check Terraform FMT Exit Code
+      if: ${{ steps.fmt.outputs.exitcode != 0 }} 
+      run: exit ${{ steps.fmt.outputs.exitcode }}
+
+    - name: Terraform Init
+      id: init
+      run: terraform init
+
+    - name: Add Terraform Init Comment
+      uses: actions/github-script@v1.1.0
+      if: ${{ steps.init.outputs.exitcode != 0 }}
+      env:
+        INIT: "terraform\n${{ steps.init.outputs.stdout }}"
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const output = `#### Terraform Init \`${{ steps.init.outcome }}\`
+
+          <details><summary>Show init</summary>
+          
+          \`\`\`${process.env.INIT}\`\`\`
+          
+          </details>
+          
+          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_actions_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
+            
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: output
+          })
+
+    - name: Check Terraform Init Exit Code
+      if: ${{ steps.init.outputs.exitcode != 0 }} 
+      run: exit ${{ steps.init.outputs.exitcode }}
+
+    - name: Terraform Validate
+      id: validate
+      run: terraform validate -no-color
+
+    - name: Add Terraform Validate Comment
+      uses: actions/github-script@0.9.0
+      if: ${{ steps.validate.outputs.exitcode != 0 }}
+      env:
+        VALIDATE: "terraform\n${{ steps.validate.outputs.stdout }}"
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const output = `#### Terraform Validate \`${{ steps.validate.outcome }}\`
+
+          <details><summary>Show validate</summary>
+          
+          \`\`\`${process.env.VALIDATE}\`\`\`
+          
+          </details>
+          
+          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_actions_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
+            
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: output
+          })
+
+    - name: Check Terraform Validate Exit Code
+      if: ${{ steps.validate.outputs.exitcode != 0 }} 
+      run: exit ${{ steps.validate.outputs.exitcode }}
