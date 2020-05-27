@@ -10,7 +10,7 @@ env:
   tf_working_dir: '.'
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'Terraform GitHub Actions'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
