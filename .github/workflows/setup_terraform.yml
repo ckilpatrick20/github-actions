@@ -7,7 +7,7 @@ on:
       - '.github/**'
 env:
   tf_version: 'latest'
-  tf_working_dir: '.'
+  tf_working_dir: 'example/terraform/directory'
 jobs:
   terraform:
     name: 'Terraform Setup'
