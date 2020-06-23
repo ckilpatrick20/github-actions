@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
-      - name: 'Checkout'
+      - name: 'Checkout Action'
         uses: actions/checkout@master
         with:
           repository: ckilpatrick20/terraform-github-actions
