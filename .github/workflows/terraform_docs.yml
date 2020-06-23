@@ -6,7 +6,7 @@ on:
     paths-ignore:
       - '.github/**'
 env:
-  tf_working_dir: '.'
+  tf_working_dir: 'example/terraform/directory'
 jobs:
   docs:
     name: 'Terraform Docs'
