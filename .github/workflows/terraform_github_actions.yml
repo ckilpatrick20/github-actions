@@ -15,8 +15,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
+        with:
+          repository: ckilpatrick20/terraform-github-actions
+          ref: master
+          path: terraform-github-actions
       - name: 'Terraform Format'
-        uses: hashicorp/terraform-github-actions@master
+        uses: ./terraform-github-actions/action.yml
         with:
           tf_actions_version: ${{ env.tf_version }}
           tf_actions_subcommand: 'fmt'
@@ -25,7 +29,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Init'
-        uses: hashicorp/terraform-github-actions@master
+        uses: ./terraform-github-actions/action.yml
         with:
           tf_actions_version: ${{ env.tf_version }}
           tf_actions_subcommand: 'init'
@@ -34,7 +38,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Validate'
-        uses: hashicorp/terraform-github-actions@master
+        uses: ./terraform-github-actions/action.yml
         with:
           tf_actions_version: ${{ env.tf_version }}
           tf_actions_subcommand: 'validate'
