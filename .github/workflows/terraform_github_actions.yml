@@ -18,9 +18,8 @@ jobs:
         with:
           repository: ckilpatrick20/terraform-github-actions
           ref: master
-          path: '.'
       - name: 'Terraform Format'
-        uses: ./terraform-github-actions/action.yml
+        uses: ./
         with:
           tf_actions_version: ${{ env.tf_version }}
           tf_actions_subcommand: 'fmt'
@@ -29,7 +28,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Init'
-        uses: ./terraform-github-actions/action.yml
+        uses: ./
         with:
           tf_actions_version: ${{ env.tf_version }}
           tf_actions_subcommand: 'init'
@@ -38,7 +37,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Validate'
-        uses: ./terraform-github-actions/action.yml
+        uses: ./
         with:
           tf_actions_version: ${{ env.tf_version }}
           tf_actions_subcommand: 'validate'
