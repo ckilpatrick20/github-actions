@@ -18,7 +18,7 @@ jobs:
         with:
           repository: ckilpatrick20/terraform-github-actions
           ref: master
-          path: terraform-github-actions
+          path: '.'
       - name: 'Terraform Format'
         uses: ./terraform-github-actions/action.yml
         with:
