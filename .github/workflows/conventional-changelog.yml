@@ -10,14 +10,17 @@ jobs:
     name: Connventional Changelog Generator
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0
       - name: Conventional Changelog Action
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          git-user-name: ckilpatrick20
+          git-user-email: ckilpatrick@ipipeline.com
+          skip-version-file: true
       - name: Add changelog to repo
         uses: EndBug/add-and-commit@v4
         with:
