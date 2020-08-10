@@ -15,9 +15,9 @@ jobs:
         fetch-depth: 0
     - uses: BobAnkh/auto-generate-changelog@master
       with:
-        REPO_NAME: 'https://github.com/ckilpatrick20/github-actions'
+        REPO_NAME: 'ckilpatrick20/github-actions'
         ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        PATH: '/CHANGELOG.md'
+        PATH: './CHANGELOG.md'
         COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
         FEAT: '1'
         FIX: '1'
