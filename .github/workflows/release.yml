@@ -18,6 +18,9 @@ jobs:
         uses: heinrichreimer/action-github-changelog-generator@v2.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Manage Files
-        run: |
-            cp CHANGELOG.md CHANGELOG.md
+      - name: check for changes
+        run: git status
+      - name: stage changed files
+        run: git add .
+      - name: commit changed files
+        run: git commit -m "Auto updating CHANGELOG.md"
