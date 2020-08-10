@@ -1,11 +1,7 @@
 name: Conventional Changelog Generator
 on:
-  # Trigger the workflow on pull request,
-  # but only for the master branch
-  pull_request:
-    branches:
-      - master
-    types: [opened, reopened, synchronize]
+  release:
+    types: [created, edited]
 
 jobs:
   generate-changelog:
