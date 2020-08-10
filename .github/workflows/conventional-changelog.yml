@@ -12,19 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        # with:
-          # fetch-depth: 0
       - name: Conventional Changelog Action
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          git-user-name: ckilpatrick20
-          git-user-email: ckilpatrick@ipipeline.com
           skip-version-file: true
-      - name: Add changelog to repo
-        uses: EndBug/add-and-commit@v4
-        with:
-          message: "Auto updating CHANGELOG.md"
-          add: "CHANGELOG.md"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
