@@ -8,7 +8,9 @@
 
 ## Inputs
 
-No input.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:-----:|
+| ami | n/a | `string` | `"ami-0323c3dd2da7fb37d"` | no |
 
 ## Outputs
 
