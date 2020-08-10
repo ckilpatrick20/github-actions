@@ -8,12 +8,22 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  changelog:
+  generate-changelog:
     runs-on: ubuntu-latest
-        
     steps:
-    - name: Generate Changelog using github-changelog-generator
-      uses: faberNovel/github-changelog-generator-action@v1.0.0-alpha02
+    - uses: actions/checkout@v2
       with:
-        # https://github.com/github-changelog-generator/github-changelog-generator/wiki/Advanced-change-log-generation-examples#additional-options
-        options: --token ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+    - name: Generate Changelog
+      uses: BobAnkh/auto-generate-changelog@master
+      with:
+        REPO_NAME: 'BobAnkh/auto-generate-changelog'
+        ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        PATH: '/CHANGELOG.md'
+        COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
+        FEAT: '1'
+        FIX: '1'
+        DOCS: '1'
+        CHORE: '1'
+        REFACTOR: '1'
+        PERF: '1'
