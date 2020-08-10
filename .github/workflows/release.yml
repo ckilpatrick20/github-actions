@@ -20,4 +20,4 @@ jobs:
           onlyLastTag: "true"
           stripHeaders: "true"
           stripGeneratorNotice: "true"
-          output: /CHANGELOG.md
+          output: CHANGELOG.md
