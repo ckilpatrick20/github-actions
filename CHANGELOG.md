@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/ckilpatrick20/github-actions/compare/v1.0.0...v1.1.0) (2020-08-10)
+
+
+### Features
+
+* adding back ability to ignore version file ([0e35108](https://github.com/ckilpatrick20/github-actions/commit/0e3510883e87690d939e890f45bcdc6a03a13252))
+
+
+
 # [1.0.0](https://github.com/ckilpatrick20/github-actions/compare/v0.1.0...v1.0.0) (2020-08-10)
 
 
@@ -87,10 +96,6 @@
 
 * changing github action
 * refactor to change github action
-
-
-
-## [0.0.2](https://github.com/ckilpatrick20/github-actions/compare/v0.0.1...v0.0.2) (2020-07-27)
 
 
 
