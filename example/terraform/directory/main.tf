@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-  ami           = "ami-0323c3dd2da7fb37d"
+  ami           = "${var.ami}"
   instance_type = "t2.micro"
 
   root_block_device {
@@ -17,4 +17,8 @@ resource "aws_instance" "example" {
     Product     = "CCOE"
     Terraform   = false
   }
+}
+
+variable "ami" {
+  default = "ami-0323c3dd2da7fb37d"
 }
