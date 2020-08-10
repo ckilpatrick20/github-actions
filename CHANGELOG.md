@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/ckilpatrick20/github-actions/compare/v1.2.2...v1.3.0) (2020-08-10)
+
+
+### Features
+
+* changing back to a t2 instance class family ([cb996ca](https://github.com/ckilpatrick20/github-actions/commit/cb996ca397ebb9981419ed7033a983f8a95de60c))
+
+
+
 ## [1.2.2](https://github.com/ckilpatrick20/github-actions/compare/v1.2.1...v1.2.2) (2020-08-10)
 
 
@@ -39,20 +48,6 @@
 ### Features
 
 * adding back ability to ignore version file ([0e35108](https://github.com/ckilpatrick20/github-actions/commit/0e3510883e87690d939e890f45bcdc6a03a13252))
-
-
-
-# [1.0.0](https://github.com/ckilpatrick20/github-actions/compare/v0.1.0...v1.0.0) (2020-08-10)
-
-
-### Code Refactoring
-
-* removing user creds from action ([bd1cbf9](https://github.com/ckilpatrick20/github-actions/commit/bd1cbf942802889ee62021e5f120944ef1c0d9e1))
-
-
-### BREAKING CHANGES
-
-* no longer using my info
 
 
 
