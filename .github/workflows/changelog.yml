@@ -1,4 +1,19 @@
-- name: Conventional Changelog Action
-  uses: TriPSs/conventional-changelog-action@v3
-  with:
-    github-token: ${{ secrets.github_token }}
+name: Conventional Changelog Generator
+on:
+  # Trigger the workflow on pull request,
+  # but only for the master branch
+  pull_request:
+    branches:
+      - master
+    types: [opened, reopened, synchronize]
+
+jobs:
+  changelog:
+    # Job name is Chanegelog
+    name: Conventional Changelog Action
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    steps:
+        - uses: TriPSs/conventional-changelog-action@v3
+          with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
