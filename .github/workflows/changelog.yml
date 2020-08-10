@@ -21,9 +21,3 @@ jobs:
         ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
         PATH: '/CHANGELOG.md'
         COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
-        FEAT: '1'
-        FIX: '1'
-        DOCS: '1'
-        CHORE: '1'
-        REFACTOR: '1'
-        PERF: '1'
