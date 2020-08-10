@@ -13,7 +13,7 @@ resource "aws_instance" "example" {
   tags = {
     Name        = "Test Instance"
     Creator     = "ckilpatrick@ipipeline.com"
-    Environment = "sandbox"
+    Environment = "QA"
     Product     = "CCOE"
     Terraform   = false
   }
