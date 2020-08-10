@@ -1,3 +1,17 @@
+# [1.0.0](https://github.com/ckilpatrick20/github-actions/compare/v0.1.0...v1.0.0) (2020-08-10)
+
+
+### Code Refactoring
+
+* removing user creds from action ([bd1cbf9](https://github.com/ckilpatrick20/github-actions/commit/bd1cbf942802889ee62021e5f120944ef1c0d9e1))
+
+
+### BREAKING CHANGES
+
+* no longer using my info
+
+
+
 # [0.1.0](https://github.com/ckilpatrick20/github-actions/compare/v0.0.4...v0.1.0) (2020-08-10)
 
 
@@ -77,10 +91,6 @@
 
 
 ## [0.0.2](https://github.com/ckilpatrick20/github-actions/compare/v0.0.1...v0.0.2) (2020-07-27)
-
-
-
-## 0.0.1 (2020-07-27)
 
 
 
