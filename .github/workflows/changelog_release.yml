@@ -17,7 +17,7 @@ jobs:
       with:
         REPO_NAME: 'ckilpatrick20/github-actions'
         ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        PATH: './CHANGELOG.md'
+        PATH: '/CHANGELOG.md'
         COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
         FEAT: '1'
         FIX: '1'
