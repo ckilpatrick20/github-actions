@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "example" {
   ami           = "${var.ami}"
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
 
   root_block_device {
     encrypted = true
