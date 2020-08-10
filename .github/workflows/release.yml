@@ -8,16 +8,13 @@ on:
 jobs:
   build:
     name: "Release"
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: "Check-out"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: "Generate changelog"
-        id: generate-changelog
         uses: heinrichreimer/action-github-changelog-generator@v2.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          onlyLastTag: "true"
-          stripHeaders: "true"
-          stripGeneratorNotice: "true"
-          output: CHANGELOG.md
