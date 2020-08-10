@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
         
     steps:
-      - name: Conventional Changelog Action
-        uses: TriPSs/conventional-changelog-action@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Generate Changelog using github-changelog-generator
+      uses: faberNovel/github-changelog-generator-action@v1.0.0-alpha02
+      with:
+        # https://github.com/github-changelog-generator/github-changelog-generator/wiki/Advanced-change-log-generation-examples#additional-options
+        options: --token ${{ secrets.GITHUB_TOKEN }}
