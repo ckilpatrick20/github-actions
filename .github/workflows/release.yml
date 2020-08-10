@@ -17,4 +17,6 @@ jobs:
       - name: "Generate changelog"
         uses: heinrichreimer/action-github-changelog-generator@v2.1
         with:
+          user: ckilpatrick20
+          project: github-actions
           token: ${{ secrets.GITHUB_TOKEN }}
