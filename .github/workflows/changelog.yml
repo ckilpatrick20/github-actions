@@ -1,19 +1,19 @@
 name: Conventional Changelog Generator
 on:
-  release:
-    types: [created, edited]
+  # Trigger the workflow on pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
 
 jobs:
   generate-changelog:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Generate changelog
+      uses: fabernovel/github-changelog-generator-action@v1
       with:
-        fetch-depth: 0
-    - name: Generate Changelog
-      uses: BobAnkh/auto-generate-changelog@master
-      with:
-        REPO_NAME: 'ckilpatrick20/github-actions'
-        ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        PATH: '/CHANGELOG.md'
-        COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
+        # You can pass any parameters from https://github.com/github-changelog-generator/github-changelog-generator/wiki/Advanced-change-log-generation-examples#additional-options
+        options: --token ${{ secrets.GITHUB_TOKEN }}
