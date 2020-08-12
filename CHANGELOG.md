@@ -1,3 +1,17 @@
+# [1.4.0](https://github.com/ckilpatrick20/github-actions/compare/v1.3.0...v1.4.0) (2020-08-12)
+
+
+### Bug Fixes
+
+* fixing environment ([d703c33](https://github.com/ckilpatrick20/github-actions/commit/d703c336fa8c8d19ca3a0608c29b86631d961f96))
+
+
+### Features
+
+* updating a random feature ([5cc0c9f](https://github.com/ckilpatrick20/github-actions/commit/5cc0c9f1d72fc7e4b9a140a148aa337bc6d13202))
+
+
+
 # [1.3.0](https://github.com/ckilpatrick20/github-actions/compare/v1.2.2...v1.3.0) (2020-08-10)
 
 
@@ -39,15 +53,6 @@
 ### Features
 
 * updating instance to t3 class ([16f48df](https://github.com/ckilpatrick20/github-actions/commit/16f48df88f2d636d89aac20b2c2881207a59fa49))
-
-
-
-# [1.1.0](https://github.com/ckilpatrick20/github-actions/compare/v1.0.0...v1.1.0) (2020-08-10)
-
-
-### Features
-
-* adding back ability to ignore version file ([0e35108](https://github.com/ckilpatrick20/github-actions/commit/0e3510883e87690d939e890f45bcdc6a03a13252))
 
 
 
