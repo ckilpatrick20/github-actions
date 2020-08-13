@@ -1,3 +1,17 @@
+# [1.5.0](https://github.com/ckilpatrick20/github-actions/compare/v1.4.0...v1.5.0) (2020-08-13)
+
+
+### Bug Fixes
+
+* fixing the wrong env ([b83633c](https://github.com/ckilpatrick20/github-actions/commit/b83633c9eb1fd4f904d706fbd9b4741e27994ca1))
+
+
+### Features
+
+* adding root block encryption ([4a59d5e](https://github.com/ckilpatrick20/github-actions/commit/4a59d5e34d192650c8275f2b32d371361f33a8f8))
+
+
+
 # [1.4.0](https://github.com/ckilpatrick20/github-actions/compare/v1.3.0...v1.4.0) (2020-08-12)
 
 
@@ -38,21 +52,6 @@
 * adding back encryption. was causing checkov action to fail. ([a08cdde](https://github.com/ckilpatrick20/github-actions/commit/a08cdde4031b9c8cb5d1608edd02d5dc3bc3eb69))
 * changing instance class back to t2. t3 was too expensive ([1ab8943](https://github.com/ckilpatrick20/github-actions/commit/1ab89439a42782f55a2ad591530118dbabd9a447))
 * must be run from a push to master ([93357ca](https://github.com/ckilpatrick20/github-actions/commit/93357ca65983ad951dc050484ee0e998442326b0))
-
-
-
-# [1.2.0](https://github.com/ckilpatrick20/github-actions/compare/v1.1.0...v1.2.0) (2020-08-10)
-
-
-### Bug Fixes
-
-* fixing an encryption issue ([6a375b1](https://github.com/ckilpatrick20/github-actions/commit/6a375b174e0ae5f355b26f8c70922f807409d4d8))
-* fixing bug I just introduced ([a26cc10](https://github.com/ckilpatrick20/github-actions/commit/a26cc10432a5e5bec1eef0664152ee2a6ae87886))
-
-
-### Features
-
-* updating instance to t3 class ([16f48df](https://github.com/ckilpatrick20/github-actions/commit/16f48df88f2d636d89aac20b2c2881207a59fa49))
 
 
 
