@@ -6,9 +6,9 @@ resource "aws_instance" "example" {
   ami           = "${var.ami}"
   instance_type = "t2.micro"
 
-  root_block_device {
-    encrypted = true
-  }
+  # root_block_device {
+  #   encrypted = true
+  # }
 
   tags = {
     Name        = "Test Instance"
