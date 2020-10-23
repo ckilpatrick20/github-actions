@@ -10,7 +10,7 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
-| ami | n/a | `string` | `"ami-0323c3dd2da7fb37d"` | no |
+| ami | ami id to use for ec2 instance | `string` | `"ami-0323c3dd2da7fb37d"` | no |
 
 ## Outputs
 
